@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+               New User Sign up
+            </header>
+
+            <div class="panel-body">
+              <div class="form">
+
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-validate form-horizontal", id: "register_form"}) do |f| %>
+                  <%= render 'partials/error_messages', object: resource %>                
+                  <div class="form-group ">
+                      <%= f.label :firstname, "First Name *", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :firstname, :class => "form-control", :id => "firstname" %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :lastname, "Last Name *", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :lastname, :class => "form-control", :id => "lastname" %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :country, "Country *", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.country_select(:country, {include_blank: 'Select a country', selected: "Select a country"}, {class: 'form-control', :id => "country_select"}) %>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                      <%= f.label :location, "Location *", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :location, :class => "form-control", :id => "location" %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :role, "Role", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.select(:roles_id, Role.all.collect {|p| [ p.role, p.id ]}, {prompt: 'Select a Role'}, {:class => "form-control"}) %>
+                    </div>
+                  </div>                                   
+                  <div class="form-group ">
+                      <%= f.label :avatar, "Image Upload", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.file_field :avatar %>
+                    </div>
+                  </div>                  
+                  <div class="form-group ">
+                      <%= f.label :email, "Email *", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.email_field :email, :class => "form-control", :id => "email" %>
+                    </div>
+                  </div>
+                  <!--
+                  <div class="form-group ">
+                      <%#= f.label :email_confirmation, "Email Confirmation *", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%#= f.email_field :email_confirmation, :class => "form-control", :id => "email" %>
+                    </div>
+                  </div> -->                                  
+                  <div class="form-group ">
+                      <%= f.label :password, "Password *", :class => "control-label col-lg-2" %>
+                      <%# if @minimum_password_length %>
+                        <!--<em>(<%#= @minimum_password_length %> characters minimum)</em>-->
+                      <%# end %>
+                    <div class="col-lg-10">
+                      <%= f.password_field :password, autocomplete: "off", :class => "form-control", :id => "password" %>
+                    </div>
+                  </div>          
+                  <div class="form-group ">
+                      <%= f.label :password_confirmation, "Password Confirmation *", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :id => "password" %>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                      <div class="col-lg-10-lg-offset-2 col-lg-10">
+                          <%= f.submit "Save", :class => "btn btn-primary wideButton" %>
+                          <%#= link_to "Cancel", destroy_account_session_path, method: :delete, :class => "btn btn-default wideButton" %>
+                          <%= link_to "Cancel", root_path, :method => :get, :class => "btn btn-default wideButton" %>
+                      </div>
+                  </div>                                
+                  </div> 
+                <% end %>
+                  <div class="links ">
+                    <%= render "devise/shared/links"%>
+                  </div>
+              </div>
+
+        </section>
+    </div>
+</div>

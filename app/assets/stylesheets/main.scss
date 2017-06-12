@@ -1,0 +1,272 @@
+
+
+#intro.intro {
+ 	height: 600px;
+ 	padding: 0 0 !important;
+ }
+
+.slogan {
+	display: flex;
+	float: none;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+}
+
+/* Sign In with Facebook */
+
+.signup {
+ 	background-color: #00ccff;
+ 	padding: 10px 30px;
+ 	border: none;
+ 	color: white;
+ 	padding-left: 24px;
+ 	padding-right: 21px;
+ 	border-radius: 100px;
+ }
+
+ .signupPosition {
+ 	/*position: absolute;
+ 	left: 50%;
+ 	transform: translateX(-50%);
+ 	margin-left: -250px;*/
+ }
+
+.fa-2x {
+	position: relative;
+	bottom: -7%;
+	left: 2%;
+}
+
+.signup span {
+	position: relative;
+	bottom: 3px;  /*11%;*/
+	padding-left: 21px;
+	font-size: 23px;
+}
+
+.btn-default:hover {
+	border: none;
+	outline: none;
+}
+
+/* Two additional buttons */
+
+.buttonsWrapper a {
+	color: white;
+	background-color: #00ccff;
+}
+
+a:hover,
+a:focus {
+    color: black;
+    color: #176e61;
+}
+
+.buttonsWrapper {
+	display: block;
+	/*width: 80%;*/
+}
+
+.buttonsWrapper .btn {
+	white-space: initial;
+}
+
+.sideSignup {
+	display: inline-block;
+	position: relative;
+	width: 250px;
+	border: none;	
+}
+
+.leftSignup {
+ 	float: left;
+}
+
+.leftDescription {
+ 	border-radius: 27px;
+ 	float: left;
+}
+
+.leftDescription .signInButton {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.buttonsWrapper .desc {
+	display: none;
+}
+
+.rightSignup {
+ 	float: right;
+}
+
+.rightDescription {
+ 	border-radius: 27px;
+ 	float: right;
+}
+
+.rightDescription .signInButton {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+
+/* Have Fun Section*/
+.middlesection {
+	background-image: url("https://s3.eu-central-1.amazonaws.com/socialnetfabrizio/coast-945484_1920.jpg");
+	height: 700px;
+	background-position: center;
+	background-size: cover;
+	color: white;
+}
+
+
+/* Chrome, Safari, AND NOW ALSO the Edge Browser and Firefox */
+/*@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+  .signup span {
+  position: relative;
+  bottom: 10%;
+  } 
+}*/
+
+/* Main Css */ 
+
+
+/* Media Queries */
+
+@media (min-width: 1550px) {
+ 	.intro {
+ 		height: 900px;
+ 	}
+}
+
+@media (min-width: 1000px) {
+
+	.middlesection h2 {
+		font-size: 60px;
+	}
+
+	.middlesection h5 {
+		font-size: 20px;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+}
+
+@media (max-width: 539px) {
+	.buttonsWrapper {
+		width: 80%;
+		margin: none;
+	}
+
+	.sideSignup {
+		width: 325px;
+		float: initial;
+		margin: auto;
+		margin-bottom: 20px;
+	}	
+}
+
+@media (max-width: 412px) {
+	#intro.intro {
+		height: 732px;
+	}
+
+	.signup {
+	 	background-color: #00ccff;
+	 	padding: 10px 30px;
+	 	border: none;
+	 	color: white;
+	 	padding-left: 15px;
+	 	padding-right: 0px;
+	 }
+
+	 .buttonsWrapper {
+	 	width: 90%;
+	 	margin: 0 0;
+	 }
+
+}
+
+@media (max-width: 360px) {
+	#intro.intro {
+		height: 640px;
+	}
+
+ 	.intro .slogan h2 {
+ 		font-size: 34px;
+ 		margin-bottom: 5px;
+ 	}
+ 	.intro .slogan h4 {
+ 		font-size: 13px;
+ 		margin-top: 0px;
+ 	} 	
+
+ 	#buttonSignUp {
+ 		margin-bottom: 17px;
+ 	}
+
+	.signup {
+	 	background-color: #00ccff;
+	 	padding: 10px 30px;
+	 	border: none;
+	 	color: white;
+	 	padding-left: 15px;
+	 	padding-right: 8px;
+	 	width: 275px;
+	 }
+
+	 .signup .fa-2x {
+	 	font-size: 1.2em;
+		position: relative;
+		bottom: -7%;
+		left: 2%;	 	
+	 }
+
+	.signup span {
+		position: relative;
+		bottom: 1px; /*9%;*/
+		padding-left: 13px;
+		font-size: 16px;
+	}
+
+	.sideSignup {
+		width: 275px;
+	}		
+
+	/* Have fun section */
+
+	.middlesection h5 {
+		font-size: 34px;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+
+}
+
+@media (max-width: 320px) {
+	#intro.intro {
+		height: 568px;
+	}
+
+ 	.intro .slogan h2 {
+ 		font-size: 27px;
+ 	}
+ 	.intro .slogan h4 {
+ 		font-size: 11px;
+ 	} 	
+
+}
+
+/* Footer */
+
+.credits {
+	margin-bottom: 19px;
+}
+
+.links_footer {
+	color:white;
+	padding-right: 5px;
+	font-size: 19px;
+}

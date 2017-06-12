@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+               <h2>Task Creation</h2>
+            </header>
+            <div class="panel-body">
+              <div class="form">
+                <%= form_for(@task, html: {class: "form-validate form-horizontal" }) do |f| %>
+                  <%= render 'partials/error_messages', object: @task %>                
+                  <div class="form-group ">
+                      <%= f.label :name, "Name", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :name, :class => "form-control" %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :project_id, "Project Id", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%#= f.select(:roles, raw("<option>Developer</option><option>Host/Investor</option>"), {}, { :class => "form-control", :id => "location"}) %>
+                      <% if @project.id %>
+                      	<%= f.select(:project_id, current_user.host.projects.collect {|p| [ p.name, p.id ]}, {:selected => @task.project_id}, {:class => "form-control"}) %>   <!--Project.all.collect {|p| [ p.name, p.id ]}-->
+                      <% else %>
+                      	<%= f.select(:project_id, current_user.host.projects.collect {|p| [ p.name, p.id ]}, {include_blank: 'Select an existing Project', selected: "Select an existing Project"}, {:class => "form-control"}) %>
+                      <% end %>                      
+                    </div>
+                  </div>                  
+                  <div class="form-group ">
+                      <%= f.label :description, "Description", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_area :description, :rows => 8, :class => "form-control" %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :skill_list, "Skills Required", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :skill_list, :class => "tagsinput form-control", :id => "tagsinput", value: f.object.skill_list.map { |t| t}.join(', ')  %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :days, "Days", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.number_field :days, :class => "form-control" %>
+                    </div>
+                  </div>                   
+                  <div class="form-group">
+                      <%= f.label :completed, "Completed", :class => "control-label col-lg-2" %>
+                      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                          <div class="checkbox">
+                              <label>
+                                  <%= f.check_box :completed %> 
+                              </label>
+                          </div>
+                      </div>
+                  </div>                                                                                                                   
+                  <div class="form-group ">
+                      <div class="col-lg-10-lg-offset-2 col-lg-10">
+                          <%= f.submit "Save", :class => "btn btn-primary wideButton"%>
+                          <%= link_to "Cancel", project_path(@project.id), :method => :get, :class => "btn btn-default wideButton" %>
+                      </div>
+                  </div>                
+                <% end %> 
+              </div>
+            </div>
+        </section>   
+    </div>
+</div>

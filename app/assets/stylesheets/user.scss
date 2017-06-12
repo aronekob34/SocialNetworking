@@ -1,0 +1,370 @@
+// Place all the styles related to the User controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Navigation */ 
+
+#task_notificatoin_bar {
+	display: none;
+}
+
+#alert_notificatoin_bar {
+	display: none;
+}
+
+.badge.bg-important {
+	display: none;
+}
+
+/* GET Registration/new */
+
+.links {
+	margin-top: 15px;
+	font-weight: 700;
+}
+
+td {
+	box-sizing: border-box;
+}
+
+.small-image {
+	height: 34px;
+}
+
+.index-image {
+	height: 62px;
+}
+
+.navigationName {
+	padding-left: 7px;
+}
+
+.developerTitle {
+	padding-top: 10px;
+}
+
+
+/* GET sessions#new */
+
+.checkbox input[type="checkbox"] {
+	margin-left: 0px;
+	float: none;
+}
+
+.rememberMe {
+	margin-left: 28px;
+}
+
+/* GET hosts#index */
+
+.hostcheckbox {
+	width: 8.333333333333332%;
+}
+
+.checkbox {
+	padding-left: 1px;
+	padding-bottom: 5px;
+}
+/*
+.table td {
+	border: solid 1px #dddddd;
+}
+*/
+.table .Fieldnumber {
+	text-align: right;
+/*	width: 10%;*/
+}
+
+.table .Checkbox {
+	text-align: center;
+/*	width: 10%;*/
+}
+
+ .login-form a {
+ 	color: white;
+ }
+
+ .btn-info {
+ 	background-color: #007aff;
+ }
+
+ .wideButton {
+ 	padding: 10px 50px;
+ }
+
+#lostPw {
+color: #797979;
+ }
+
+.remember_me_Label {
+ 	padding-left: 0px;
+ 	color: #797979;
+ }
+
+ .table .btn {
+ 	border-radius: 10%;
+ 	padding: 0px 6px;
+ }
+
+ .table .fa-info {
+ 	padding: 0px 2px;
+ }
+
+.options {
+	text-align: center;
+}
+
+#main-content {
+	min-height: 100%;
+}
+
+/* GET locations#new */ 
+
+.imagesUpload {
+	padding-top: 0px;
+	text-align: right;
+}
+
+.uploadButton {
+	margin-top: 7px;
+}
+
+/* GET locations#show */
+
+.houseimage {
+	width: 90%;
+	margin-bottom: 10px;
+}
+
+#colPictures {
+	text-align: center;
+}
+
+.imageEdit {
+	padding: 2px 15px;
+	font-size: 10px;
+}
+
+/* GET locations#delete */
+
+.alert-warning {
+	color: black;
+}
+
+
+/* GET location_image#show */
+
+.buttonLeft {
+	float: left;
+}
+
+.buttonRight {
+	float: right;
+}
+
+/* GET tasks#new */
+
+#completedCheckbox {
+	text-align: left;
+}
+
+
+/* GET conversation/:id/messages/index */
+
+/*
+#messageHeader {
+	border-bottom: none;
+}
+
+#messageSender {
+	font-weight: bold;
+}
+
+#messageBody {
+	border-top: none;
+}
+
+#message_body {
+	height: 200px;
+}
+
+#messages .btn-primary {
+	margin-top: 10px;
+}
+*/
+
+/* Changing the placeholder color for the forms*/
+
+.form-control::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #666;
+   opacity:  1;
+}
+
+
+.form-control::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+   color:    #666;
+   opacity:  1;
+}
+
+/* GET developers/index */
+
+.searchDescription {
+	padding-left: 12px;
+}
+
+#skillLabel {
+	float: left;
+	margin-top: 4px;
+}
+
+.specialHeight {
+	height: 34px !important;
+	border: 1px solid #c7c7cc;
+	border-radius: 4px;
+}
+
+.specialHeight .tagsinput-add {
+	padding: 0px 4px;
+}
+
+#advancedSearch {
+	display: none;
+}
+
+/* GET developers#index the new one*/
+
+.table tbody > tr > td {
+	line-height: 2.429;
+}
+
+/* making all div width 100% it looks better in the wide and md version, the description is over the input field */
+.form-inline .form-group.responsiveInlineFormGroup {
+	display: block;
+	margin-bottom: 15px;
+}
+.form-inline .form-group .responsiveInlineForm {
+	width: 100%;
+} 
+
+/* button div same height as the other divs, then making the button stick to the bottom of his div */
+.inlineFormButtonGroup {
+	height: 56px;
+}
+
+.inlineFormButton {
+	position: relative;	
+	top: 100%;
+	transform: translateY(-100%);
+	height: 42px;
+}
+
+.advancedSearch {
+	margin-left: 6px;
+}
+
+/* GET developers#show */
+
+#profileTab {
+	padding-left: 40px;
+}
+
+/* All Pages */
+
+.credits a {
+	color: #0055b3;
+}
+
+/* user navigation */
+
+.footerPosition {
+	/*position: absolute;
+	top: 100%;
+	right: 0;*/
+	font-weight: 500;
+	margin-right: 5px;
+}
+
+.creditsColor {
+	color: #797979;
+}
+
+/* Media Queries */
+
+/* GET locations#show */
+
+@media (min-width: 766px) {
+ 	#colPictures {
+ 		margin-bottom: 10px;
+ 	}	
+}
+
+@media (max-width: 766px) {
+ 	#colPictures {
+ 		margin-bottom: 10px;
+ 	}
+}
+
+@media (max-width: 360px) {
+ 	.imageEdit {
+ 		padding: 4px 10px;
+ 		font-size: 7px;
+ 	}
+
+ 	.login-form {
+ 	margin-top: 75px;
+ 	}
+}
+
+/* Others */
+
+@media (max-width: 800px) {
+ 	/*#navProfile {
+ 		display: none;
+ 	}*/
+ 	#task_notificatoin_bar {
+ 		display: none;
+ 	}
+ 	#mail_notificatoin_bar {
+ 		display: none;
+ 	}
+ 	#alert_notificatoin_bar {
+ 		display: none;
+ 	}
+ 	#searchBar {
+ 		display: none;
+ 	}
+}
+
+@media (max-width: 510px) {
+ 	#logoTitle {
+ 		display: none;
+ 	}
+
+ 	.notification-row {
+ 		display: block;
+ 	}
+
+}
+
+/* Specific Mozilla */
+
+@-moz-document url(http://localhost:3000/),
+	   url-prefix(http://localhost:3000/),
+       domain(mozilla.org)
+    {
+      /* CSS rules here apply to:
+         + The page "http://www.w3.org/".
+         + Any page whose URL begins with "http://www.w3.org/Style/"
+         + Any page whose URL's host is "mozilla.org" or ends with
+           ".mozilla.org"
+       */
+
+      /* make the above-mentioned pages really ugly */
+      .table {
+		border-collapse: separate;
+	   }
+	  .table td {
+	    border: solid 0px #dddddd;
+	  }
+	
+}

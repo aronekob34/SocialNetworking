@@ -1,0 +1,38 @@
+<div id="messages" class="tab-pane active col-lg-12 col-md-10">        
+  <ul class="list-group">
+  <li class="panel-heading">Inbox</li>
+  <% @conversations.each do |conversation| %>
+    <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
+      <% if conversation.sender_id == current_user.id %>   
+          <% recipient = User.find(conversation.recipient_id) %>
+      <% else %>
+        <% recipient = User.find(conversation.sender_id) %>
+      <% end %> 
+    <li class="list-group-item text-right">
+      <%= link_to conversation_messages_path(conversation), :class => "pull-left" do %>
+        <%= recipient.firstname %>
+      <% end %> 
+        <%= recipient.updated_at %>
+    </li>        
+    <% end %>
+  <% end %>  
+  </ul>                   
+</div> 
+
+
+
+<div id="messages" class="tab-pane active col-lg-12 col-md-10">        
+  <ul class="list-group">
+  <li class="panel-heading">All Users</li>
+  <% @users.each do |user| %>
+    <% if user.id != current_user.id %>
+      <li class="list-group-item text-right">
+        <div class="pull-left">
+          <%= user.firstname %>
+        </div> 
+        <%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
+      </li>
+    <% end %>
+  <% end %> 
+  </ul>                   
+</div> 

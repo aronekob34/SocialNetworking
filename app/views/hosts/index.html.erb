@@ -1,0 +1,146 @@
+<!-- Search -->
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Modify Search Criteria
+            </header>
+            <div class="panel-body">
+                <%= form_for(@developer, :url => { :action => :index_update}, html: {method: :get, class: "form-inline" }) do |f| %>
+                  <div class="row">
+                      <!--<div class="form-group col-lg-3 responsiveInlineFormGroup">
+                          <%#= f.label :country, "Country", :class => "control-label responsiveInlineForm" %>
+                          <%#= f.text_field :country, :class => "form-control responsiveInlineForm" %>
+                      </div>-->
+                      <div class="form-group col-lg-3 responsiveInlineFormGroup">
+                          <%= f.label :jobtitle_id, "Job Title", :class => "control-label responsiveInlineForm" %>
+                          <%= f.select(:jobtitle_id, Jobtitle.all.collect {|p| [ p.name, p.id ]}, {prompt: 'Select a Job Title'}, {:class => "form-control responsiveInlineForm"}) %>                          
+                      </div> 
+                      <div class="form-group col-lg-3 responsiveInlineFormGroup">
+                        <%= f.label :skill_list, "Skills", :class => "control-label responsiveInlineForm" %>
+                        <%= f.text_field :skill_list, :class => "form-control responsiveInlineForm", :placeholder => "for ex. css, html, javascript, separated by comma ," %>
+                      </div>  
+                      <div class="form-group col-lg-3 responsiveInlineFormGroup">
+                        <%= f.label :interest_list, "Interests", :class => "control-label responsiveInlineForm" %>
+                        <%= f.text_field :interest_list, :class => "form-control responsiveInlineForm", :placeholder => "for ex. snowboarding, surfing, separated by comma ," %>
+                      </div>                                                                               
+                      <div class="form-group col-lg-3 responsiveInlineFormGroup inlineFormButtonGroup">  
+                        <%= f.submit "Search", :class => "form-control btn btn-primary wideButton pull-right inlineFormButton"%>
+                      </div>
+                      <!--<button type="submit" class="btn btn-primary">Sign in</button>-->
+                  </div>
+                <%= link_to "Advanced Search", {}, :class => "advancedSearch", :id => "buttonSearch" %>          
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Advanced Search -->
+<div class="row" id="advancedSearch">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+               <h2>Advanced Search Parameters</h2>
+            </header>
+            <div class="panel-body">
+                    <div class="form-group ">
+                        <%= f.label :experience, "Years of Experience", :class => "control-label col-lg-2" %>
+                      <div class="col-lg-10">
+                        <%= f.number_field :experience, :class => "form-control" %>
+                      </div>
+                    </div> 
+                                              
+                  <% end %>
+                  <div class="form-group ">
+                      <div class="col-lg-10-lg-offset-2 col-lg-10">
+                          <%#= f.submit "Update", :class => "btn btn-primary wideButton"%>
+                          <%#= link_to "Cancel", edit_user_registration_path, :method => :get, :class => "btn btn-default wideButton" %>
+                      </div>
+                  </div>      
+            </div>
+        </section>   
+    </div>
+</div>
+
+
+<!-- List of Developers-->
+<div class="row">
+  <div class="col-sm-12 col-lg-12">
+      <section class="panel">
+          <header class="panel-heading">
+              Developers
+          </header>
+          <table class="table">
+              <thead>
+              <tr class="row">
+                  <th></th>
+                  <th>Firstname</th>
+                  <th class="hidden-xs hidden-sm">Lastname</th>
+                  <th class="hidden-sm hidden-xs">Country</th>
+                  <th class="hidden-sm hidden-xs">Location</th>
+                  <th class="hidden-sm hidden-xs">Gender</th>
+                  <th class="hidden-sm hidden-xs">Last Seen</th>
+                  <th class="hidden-sm hidden-xs Fieldnumber">Experience</th>
+                  <th class="hidden-xs">Interests</th>
+                  <th class="">Skills</th>
+                  <th class="hidden-xs">Jobtitle</th>
+                  <th class="hidden-sm hidden-xs">Website</th>
+                  <th class="options">Options</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @developers.each do |developer| %>
+                <% user = User.find(developer.user_id) %>
+                <% jobtitle = Jobtitle.find(developer.jobtitle_id) %>
+                <tr class="row">
+                    <td><span class="profile-ava"><%= image_tag user.avatar.url(:thumb).to_s if user && user.avatar.url != nil %><%= image_tag user.image, :class => "small-image" if user && user.image != nil && user.avatar.url == nil %></span></td>
+                    <td class=""><%= user.firstname %></td>
+                    <td class="hidden-xs hidden-sm"><%= user.lastname %></td>
+                    <td class="hidden-sm hidden-xs"><%= user.country_name %></td>                  
+                    <td class="hidden-sm hidden-xs"><%= user.location %></td>                  
+                    <td class="hidden-sm hidden-xs"><%= user.gender %></td>                  
+                    <td class="hidden-sm hidden-xs"><%= user.last_sign_in_at %></td>                             
+                    <td class="hidden-sm hidden-xs Fieldnumber"><%= developer.experience %></td>
+                    <td class="hidden-xs"><%= developer.interest_list %></td>
+                    <td class=""><%= developer.skill_list %></td>                  
+                    <td class="hidden-xs"><%= jobtitle.name %></td>                  
+                    <td class="hidden-sm hidden-xs Checkbox">
+                        <% if developer.website_url %>
+                          <%= link_to developer.website_url do %>
+                          <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                          <% end %>
+                        <% else %>
+                        <% end %>
+                    </td>   
+                    <td class="options">
+                      <div class="btn-group">
+                       <%= link_to developer_path(developer.id), class: "btn btn-primary" do %><i class="fa fa-arrow-right" aria-hidden="true"></i>
+                       <% end %>
+                      </div>
+                    </td>
+                </tr>
+              <% end %>
+              </tbody>
+          </table>
+      </section>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+        <div class="form-group ">
+          <div class="panel-body">
+            <div class="form">        
+              <div class="col-lg-10-lg-offset-2 col-lg-10">
+                  <%#= f.submit "Save", :class => "btn btn-primary wideButton"%>
+                  <%= link_to "Go Back", hosts_path, :method => :get, :class => "btn btn-default wideButton" %>
+                  <%= link_to "New Location", new_location_path, :method => :get, :class => "btn btn-success wideButton" %>
+                  <%= link_to "New Project", new_project_path, :method => :get, :class => "btn btn-warning wideButton" %>
+              </div>
+            </div>
+          </div>            
+        </div> 
+        </section>   
+    </div>
+</div>

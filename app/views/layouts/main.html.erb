@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>BarteringApps</title>
+	<%= csrf_meta_tags %>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Squadfree - Free bootstrap 3 one page template</title>
+
+
+	
+	<%= stylesheet_link_tag 'layout', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'layout', 'data-turbolinks-track': 'reload' %>
+	<!-- =======================================================
+	    Theme Name: Squadfree
+	    Theme URL: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/
+	    Author: BootstrapMade
+	    Author URL: https://bootstrapmade.com
+	======================================================= -->
+	<!--<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>-->
+
+	</head>
+
+	<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+	
+    <%= yield %>
+
+
+	<!-- begin olark code -->
+	<script type="text/javascript" async>
+	;(function(o,l,a,r,k,y){if(o.olark)return;
+	r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0];
+	y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r);
+	y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)};
+	y.extend=function(i,j){y("extend",i,j)};
+	y.identify=function(i){y("identify",k.i=i)};
+	y.configure=function(i,j){y("configure",i,j);k.c[i]=j};
+	k=y._={s:[],t:[+new Date],c:{},l:a};
+	})(window,document,"static.olark.com/jsclient/loader.js");
+	/* Add configuration calls below this comment */
+	olark.identify('2922-432-10-3248');</script>
+	<!-- end olark code -->
+  </body>
+</html>

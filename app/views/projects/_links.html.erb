@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+        <div class="form-group ">
+          <div class="panel-body">
+            <div class="form">        
+              <div class="col-lg-10-lg-offset-2 col-lg-10">
+                  <%#= f.submit "Save", :class => "btn btn-primary wideButton"%>
+                  <%= link_to "Go Back", projects_path, :method => :get, :class => "btn btn-default wideButton" %>
+                  <%= link_to "New Task", new_task_path(@project.id), :method => :get, :class => "btn btn-success wideButton" %>
+                  <%= link_to "New Ad", new_ad_path(@project.id), :method => :get, :class => "btn btn-warning wideButton" %>
+              </div>
+            </div>
+          </div>            
+        </div> 
+        </section>   
+    </div>
+</div>

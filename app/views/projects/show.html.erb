@@ -1,0 +1,163 @@
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+               <h2>Project Display</h2>
+            </header>
+            <div class="panel-body">
+              <div class="form">
+                <%= form_for(@project, html: {class: "form-validate form-horizontal" }) do |f| %>
+                  <%= render 'partials/error_messages', object: @project %>                
+                  <div class="form-group ">
+                      <%= f.label :name, "Name", :class => "control-label col-lg-2", disabled: true %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :name, :class => "form-control", disabled: true %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :description, "Description", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :description, :class => "form-control", disabled: true %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :percentage_completion, "Percentage of completion", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.number_field :percentage_completion, :class => "form-control", disabled: true %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :nemployees, "Number of Employees", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :nemployees, :class => "form-control", disabled: true %>
+                    </div>
+                  </div>                   
+                  <div class="form-group ">
+                      <%= f.label :ninvestors, "Number of Investors", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :ninvestors, :class => "form-control", disabled: true %>
+                    </div>
+                  </div> 
+                  <div class="form-group">
+                      <label class="control-label col-lg-2 col-md-1 col-sm-1 col-xs-6" for="inputSuccess">Hiring</label>
+                      <div class="col-sm-1 col-xs-6">
+                          <div class="checkbox">
+                                  <%= f.check_box :hiring, disabled: true %> 
+                          </div>
+                      </div>
+                  </div>          
+                <% end %> 
+              </div>
+            </div>
+        </section>   
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <section class="panel">
+          <header class="panel-heading">
+              Tasks
+          </header>
+          <table class="table">
+              <thead>
+              <tr class="row">
+                  <th class="">Task Name</th>
+                  <th class="hidden-xs">Task Description</th>
+                  <th class="Fieldnumber hidden-sm hidden-xs">Task Skills Required</th>
+                  <th class="Fieldnumber hidden-sm hidden-xs">Days</th>
+                  <th class="Checkbox">Completed</th>
+                  <th class="options">Options</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @tasks.each do |task| %>
+              <tr class="row">
+                  <td class="col-md-2"><%= task.name %></td>
+                  <td class="col-md-4 hidden-xs"><%= task.description %></td>
+                  <td class="col-md-2 Fieldnumber hidden-sm hidden-xs"><%= task.skill_list %></td>
+                  <td class="col-md-2 Fieldnumber hidden-sm hidden-xs"><%= task.days %></td>
+                  <td class="col-md-1 Checkbox">
+                      <% if task.completed %>
+                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                      <% else %>
+                        <i class="fa fa-square-o" aria-hidden="true"></i>
+                      <% end %>
+                  </td>
+                  <td class="options col-md-1">
+                    <div class="btn-group">
+                    <%= link_to task_path(task.id), class: "btn btn-primary" do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
+                    <% if current_user.host && current_user.host.id == @location.host_id %>
+                      <%= link_to edit_task_path(task.id), class: "btn btn-success" do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %><%= link_to delete_task_path(task.id), class: "btn btn-danger" do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+                    <% end %>
+                    </div>
+                  </td>                  
+              </tr>
+              <% end %>
+              </tbody>
+          </table>
+      </section>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <section class="panel">
+          <header class="panel-heading">
+              Ads
+          </header>
+          <table class="table">
+              <thead>
+              <tr class="row">
+                  <th class="">Project</th>
+                  <th class="">Task</th>
+                  <th class="">Title</th>
+                  <th class="">Location</th>
+                  <th class="Fieldnumber hidden-xs hidden-sm">Budget</th>
+                  <th class="Fieldnumber hidden-xs hidden-sm">Days</th>
+                  <th class="">Remote</th>
+                  <th class="options">Options</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @ads.each do |ad| %>
+              <tr class="row">
+                  <td class="col-md-2"><%= @project.name %></td>
+                  <% task = Task.find(ad.task_id) %>
+                  <td class="col-md-2"><%= task.name %></td>
+                  <td class="col-md-3"><%= ad.title %></td>
+                  <% location = Location.find(ad.location_id) %>
+                  <td class="col-md-1"><%= location.location %></td>
+                  <td class="Fieldnumber col-md-1 hidden-xs hidden-sm"><%= ad.budget %></td>
+                  <td class="Fieldnumber col-md-1 hidden-xs hidden-sm"><%= ad.days %></td>
+                  <td class="Checkbox col-md-1">
+                      <% if ad.remote %>
+                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                      <% else %>
+                        <i class="fa fa-square-o" aria-hidden="true"></i>
+                      <% end %>
+                  </td>
+                  <td class="options col-md-2">
+                    <div class="btn-group">
+                    <%= link_to ad_path(ad.id), class: "btn btn-primary" do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
+                    <% if current_user.host && current_user.host.id == @location.host_id %>
+                      <%= link_to edit_ad_path(ad.id), class: "btn btn-success" do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
+                      <%= link_to delete_ad_path(ad.id), class: "btn btn-danger" do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+                    <% end %>
+                    </div>
+                  </td>                  
+              </tr>
+              <% end %>
+              </tbody>
+          </table>
+      </section>
+  </div>
+</div>
+
+<% if current_user.host && current_user.host.id == @location.host_id %>
+  <%= render "projects/links"%>
+<% elsif current_user.host %>
+  <%= link_to "Back", hosts_path, :method => :get, :class => "btn btn-default wideButton" %>
+<% elsif current_user.developer %>
+  <%= link_to "Back", developers_path, :method => :get, :class => "btn btn-default wideButton" %>
+<% end %> 

@@ -1,0 +1,10 @@
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+//= require bootstrap-sprockets
+//= require jquery.easing
+//= require jquery.scrollTo
+//= require wow.min
+//= require custom
+//= require cookieconsent
+//= require main

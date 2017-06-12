@@ -1,0 +1,34 @@
+<div class="alert alert-warning fade in">
+  <button data-dismiss="alert" class="close close-sm" type="button">
+      <i class="icon-remove"></i>
+  </button>
+  <strong>Warning!</strong> Are you sure you want to delete the following Location?
+</div>   
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+               <h2>Location Delete</h2>
+            </header>
+            <div class="panel-body">
+            <%= link_to "Delete", {:action => "destroy"}, :method => :delete, :class => "btn btn-default wideButton" %>
+            <%= link_to "Cancel", locations_path, :method => :get, :class => "btn btn-default wideButton" %>
+            </div>
+        </section>   
+    </div>
+</div>
+
+<%# console %> 
+<!-- page end-->
+<div class="text-right">
+  <div class="credits">
+      <!-- 
+          All the links in the footer should remain intact. 
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
+      -->
+      <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div>
+</div>

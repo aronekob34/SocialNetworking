@@ -1,0 +1,175 @@
+<!-- Inline form-->
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Modify Search Criteria
+            </header>
+            <div class="panel-body">
+                <%= form_for(@location, :url => { :action => :index_update}, html: {method: :get, class: "form-inline" }) do |f| %>
+                  <div class="row">
+                      <div class="form-group col-lg-3 responsiveInlineFormGroup">
+                          <%= f.label :country, "Country", :class => "control-label responsiveInlineForm" %>
+                          <%= f.text_field :country, :class => "form-control responsiveInlineForm" %>
+                      </div>
+                      <div class="form-group col-lg-3 responsiveInlineFormGroup">
+                          <%= f.label :location, "Location", :class => "control-label responsiveInlineForm" %>
+                          <%= f.text_field :location, :class => "form-control responsiveInlineForm" %>
+                      </div> 
+                        <%= f.fields_for :ads_attributes do |ad| %>
+                        <div class="form-group col-lg-3 responsiveInlineFormGroup">
+                          <%= ad.label :skill_list, "Skills", :class => "control-label responsiveInlineForm" %>
+                          <%= ad.text_field :skill_list, :class => "form-control responsiveInlineForm", :placeholder => "for ex. css, html, javascript," %>
+                        </div>                                                            
+                      <div class="form-group col-lg-3 responsiveInlineFormGroup inlineFormButtonGroup">  
+                        <%= f.submit "Search", :class => "form-control btn btn-primary wideButton pull-right inlineFormButton"%>
+                      </div>
+                      <!--<button type="submit" class="btn btn-primary">Sign in</button>-->
+                  </div>
+                <%= link_to "Advanced Search", {}, :class => "advancedSearch", :id => "buttonSearch" %>          
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<div class="row" id="advancedSearch">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+               <h2>Advanced Search Parameters</h2>
+            </header>
+            <div class="panel-body">
+                    <div class="form-group ">
+                        <%= ad.label :days, "Days", :class => "control-label col-lg-2" %>
+                      <div class="col-lg-10">
+                        <%= ad.number_field :days, :class => "form-control" %>
+                      </div>
+                    </div>      
+                    <div class="form-group">
+                        <label class="control-label col-lg-2" for="inputSuccess">Benefits</label>
+                        <div class="col-lg-10">
+                            <label class="checkbox-inline">
+                                <%= f.check_box :singleroom %> Singleroom
+                            </label>
+                            <label class="checkbox-inline">
+                                <%= f.check_box :surfspot %> Surfspot
+                            </label>
+                            <label class="checkbox-inline">
+                                <%= f.check_box :barbecue %> Barbecue
+                            </label>
+                            <label class="checkbox-inline">
+                                <%= f.check_box :villa %> Villa
+                            </label>
+                            <label class="checkbox-inline">
+                                <%= f.check_box :swimmingpool %> Swimmingpool
+                            </label>
+                            <label class="checkbox-inline">
+                                <%= f.check_box :skiresort %> Skiresort
+                            </label>                                                                
+                            <label class="checkbox-inline">
+                                <%= ad.check_box :remote %> Remote
+                            </label>      
+                            <% end %>                       
+                        </div>
+                    </div>  
+                  <% end %>
+                  <div class="form-group ">
+                      <div class="col-lg-10-lg-offset-2 col-lg-10">
+                          <%#= f.submit "Update", :class => "btn btn-primary wideButton"%>
+                          <%#= link_to "Cancel", edit_user_registration_path, :method => :get, :class => "btn btn-default wideButton" %>
+                      </div>
+                  </div>      
+            </div>
+        </section>   
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <section class="panel">
+          <header class="panel-heading">
+              Tasks and Projects for your Skills
+          </header>
+          <table class="table">
+              <thead>
+              <tr class="row">
+                  <th class="col-md-2 col-xs-3">Project Name</th>
+                  <th class="col-md-2 col-xs-3">Country</th>                  
+                  <th class="col-md-1 col-xs-4">Location</th>
+                  <th class="col-md-2 hidden-xs">Task Name</th>
+                  <th class="col-md-2 hidden-xs hidden-sm">Skills</th>
+                  <th class="col-md-2 hidden-sm hidden-xs">Host</th>
+                  <th class="col-md-1 Fieldnumber hidden-xs">Budget</th>
+                  <th class="col-md-2 col-xs-1 options">Options</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @locations.each do |location| %>
+                  <% adid = 0 %>
+                  <% while adid < location.ads.size %>
+                    <% ad = location.ads[adid] %>
+                    <% project = Project.find(ad.project_id) %>
+                    <% location = Location.find(ad.location_id) %>
+                    <% host = Host.find(location.host_id) %>
+                    <% user = User.find(host.user_id) %>
+                    <% task = Task.find(ad.task_id) %>
+                      <tr class="row">
+                          <td class="col-md-2 col-xs-3"><%= project.name %></td>
+                          <td class="col-md-2 col-xs-3"><%= location.country_name %></td>
+                          <td class="col-md-1 col-xs-4"><%= location.location %></td>
+                          <td class="col-md-2 hidden-xs"><%= task.name %></td>
+                          <td class="col-md-2 hidden-xs hidden-sm"><%= task.skills_list %></td>                                            
+                          <td class="col-md-2 hidden-sm hidden-xs"><%= user.firstname %> <%= user.lastname %></td>
+                          <td class="col-md-1 Fieldnumber hidden-xs"><%= project.budget %></td>
+                          <td class="col-md-2 col-xs-1 options">
+                            <div class="btn-group">
+                            <%= link_to project_path(project.id), class: "btn btn-primary" do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
+                            </div>
+                          </td>                  
+                      </tr>
+                    <% adid+=1 %>
+                  <% end %>
+              <% end %>
+              </tbody>
+          </table>
+      </section>
+  </div>
+</div>
+
+<%# while y < @location.size %>
+<% @locations.each do |location| %>
+  <% old_location = 0 %>
+  <% if (location != old_location || old_location == 0) && location.location_images.present? %>
+  <%# binding.pry %>
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                   <h2>Pictures of <%= location.location %></h2>
+                </header>
+                <div class="panel-body">
+                  <div class="form">
+                    <div class="row">
+                        <%# binding.pry %>
+                        <%# if old_location == 0 || location != old_location %>
+                          <% location.location_images.each do |p| %>
+                          <%# for i in 0..(@location.houseimages.size-1) %>
+                          <div class="col-md-3 col-sm-3" id="colPictures">
+                            <%= image_tag p.houseimages_url, :class => "center-block houseimage" %>
+                            <%#= image_tag @location.houseimages[i].url, :class => "center-block houseimage" %>
+                            <%# break if i > 3 %>
+                            <%= link_to "Display", location_image_path(p), :class => "imageEdit btn btn-primary" %>
+                          </div>
+                          <% end %>
+                        <%# end %>
+                    </div>                 
+                  </div>
+                </div>
+            </section>   
+        </div>
+    </div>
+  <% end %>
+  <% old_location = location %>
+  <%# puts location.location_images %>
+<% end %>

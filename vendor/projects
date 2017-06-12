@@ -1,0 +1,52 @@
+1 Q&A coding website with payd subscription and betting for questions
+	1. Betting for answers
+	2. Monthly subscription for getting a number of bets or answers
+	3. giving 10% or 20% of the bet to voters with experience, they win if the upvote the correct answer, they can loose if they vote flagged one or wrong one
+	4. having a certain reputation to vote and answer betting questions
+	5. Flagging - Bet 30$ and flag somebody that is spamming, 
+		a. If it was not spam, we get the 30$ 
+		b. If it was was spam, you get back your bet, the spammer pays 30$
+		c. You get back your 30$, but not the bet, the senior member get it.
+		d. Colui che ha fatto la domanda è stato aiutato ed ha raggiunto la risposta. Split della bounty 50% 50%
+		e. La quota dipende dalla issue, dal tempo per risolvere la disputa e dal professionista. Si parla di cifre fra i 5-30 $ 
+	6. Gli utenti possono usare i soldi della prima domanda per una seconda domanda, raddoppiando la scommessa. Lo stesso vale per la terza, la quarta e la quinta
+	7. Abbonamento 30 Euro al mese, per ricevere tutoraggio e aiuto. Domande come in Stackoverflow a cui rispondo in ambito HTML/CSS/Javascript/Rails/Ruby. Se non ho la
+	   risposta possono fare una bouty featured. 
+	   Rispondo a 15 Domande al giorno * 20 giorni = 300 
+	   30 Studenti. 30 Euro al mese a testa
+	8. Altre persone come te possono lavorare e seguire altri 20 studenti
+	9  Primo livello di support junior, chiedono domande e aggiungono importanti dettagli, secondo livello di support intermediate e poi senior. I senior non possono rispondere alle domande prima di un tot di giorni, in questo modo risolvono solo le tematiche difficili e non perdono tempo a risolvere cose banali.
+	10 3 livelli di abbonamento 3 livelli professionali in base all esperienza, diverse fee o retribuzioni
+	11 questionario per capire qual è il problema
+
+2 Questionario per trovare una soluzione o fornire documentazione specifica relativa alle problematiche nella programmazione
+
+3 application for getting people to rank up in stackoverflow
+	connect people anonymsly that want to rank up, give them post to upvote and then keep them anonymous
+
+4 wifi sharing 
+	open source software
+	openwisp
+
+	idee
+	amici su facebook si scambiano il wifi in cambio di credito convertibile in moneta
+
+5 Automated Fiscal/Legal assistance with outsourcing to cheap experts
+
+6 long term room rental
+
+7 mappatura dei murales
+
+SHORTCUTS
+heroku run rails console
+heroku pg:psql per accedere al database produzione
+psql -d SocialNetwork_development per accedere al db
+\dt per mostrare tutte le tabelle
+rake assets:precompile
+rm -rf public/assets
+RAILS_ENV=production bundle exec rake assets:precompile
+lsof -wni tcp:3000
+kill -9 59780
+foreman configuration procfile web: bundle exec rails s
+git rm -r vendor/plugins #delete files from git then commit and push
+git clone https://github.com/discourse/discourse.git ~/discourse

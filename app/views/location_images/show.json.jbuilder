@@ -1,0 +1,1 @@
+json.partial! "location_images/location_image", location_image: @location_image

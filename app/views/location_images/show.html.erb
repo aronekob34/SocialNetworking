@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+            	<h2>Display Image</h2>
+            </header>
+            <div class="panel-body">
+	             	<div class="form form-validate form-horizontal">
+						<div class="form-group ">
+							<%= render 'partials/error_messages', object: @location_image %>                
+							<%= image_tag @location_image.houseimages_url, :class => "center-block houseimage" %>
+						</div> 
+						<div class="form-group ">
+							<div class="col-lg-12-lg-offset-2 col-lg-12">
+								<%  if @location_image.id > @location_first.id%>
+									<%= link_to 'Previous Picture', location_image_path(@location_image.id.to_i - 1),  :class => "btn btn-success wideButton buttonLeft" %> 
+								<% end %>
+								<% if @location_image.id < @location_last.id %>
+									<% location_image_id = @location_image.id %>
+									<%= link_to 'Next Picture', location_image_path(@location_image.id.to_i + 1),  :class => "btn btn-success wideButton buttonRight" %>
+								<% end %>
+							</div>
+						</div>                                    
+						<div class="form-group ">
+							<div class="col-lg-10-lg-offset-2 col-lg-10">
+								<% if current_user.host && current_user.host.id == @location.host_id %>
+									<%= link_to 'Edit', edit_location_image_path(@location_image),  :class => "btn btn-primary wideButton" %> 
+									<%= link_to "Back", location_path(@location_image.location_id), :method => :get, :class => "btn btn-default wideButton" %>
+								<% elsif current_user.host %>
+									<%= link_to "Back", hosts_path, :method => :get, :class => "btn btn-default wideButton" %>
+								<% elsif current_user.developer %>
+									<%= link_to "Back", developers_path, :method => :get, :class => "btn btn-default wideButton" %>
+								<% end %>								
+							</div>
+						</div> 						
+              </div>
+            </div>
+        </section>   
+    </div>
+</div>

@@ -1,0 +1,14 @@
+//= require jquery
+//= require jquery-ui
+//= require jquery_ujs
+//= require bootstrap-sprockets
+//= require jquery.easing
+//= require jquery.scrollTo
+//= require jquery.nicescroll
+//= require jquery.tagsinput
+//= require form-component
+//= require scripts
+//= require bootstrap-switch
+//= require wow.min
+//= require user
+//= require testmain

@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+               <h2>Location Profile Creation</h2>
+            </header>
+
+            <div class="panel-body">
+              <div class="form">
+                <%= form_for(@location, html: {class: "form-validate form-horizontal" }) do |f| %>
+                  <%= render 'partials/error_messages', object: @location %>                
+                  <% @location_images = @location.location_images.build %>
+                  <div class="form-group ">
+                      <%= f.label :country, "Country/Nation", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.country_select(:country, {include_blank: 'Select a country', selected: current_user.country}, {class: 'form-control', :id => "country_select"}) %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :state, "State/Region", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :state, :class => "form-control" %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :location, "Address", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :location, :class => "form-control" %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :description, "Description", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_area :description, :class => "form-control" %>
+                    </div>
+                  </div>                   
+                  <div class="form-group">
+                      <label class="control-label col-lg-2" for="inputSuccess">Benefits</label>
+                      <div class="col-lg-10">
+                          <label class="checkbox-inline">
+                          	  <%= f.check_box :singleroom %> Singleroom
+                          </label>
+                          <label class="checkbox-inline">
+                              <%= f.check_box :surfspot %> Surfspot
+                          </label>
+                          <label class="checkbox-inline">
+                              <%= f.check_box :barbecue %> Barbecue
+                          </label>
+                          <label class="checkbox-inline">
+                              <%= f.check_box :villa %> Villa
+                          </label>
+                          <label class="checkbox-inline">
+                              <%= f.check_box :swimmingpool %> Swimmingpool
+                          </label>
+                          <label class="checkbox-inline">
+                              <%= f.check_box :skiresort %> Skiresort
+                          </label>                                          
+                      </div>
+                  </div>    
+                    <%= f.fields_for :location_images do |p| %>
+                      <div class="form-group ">
+                          <div class="col-lg-2 col-md-2 imagesUpload pull-left">
+                            <%= p.label :houseimages, "Upload house Images", :class => "control-label"%> </br>
+                            <div class="">Select multiple images using CTRL</div>
+                          </div>
+                        <div class="col-lg-10 col-md-10">
+                          <%# binding.pry %>
+                          <%= p.file_field :houseimages, :multiple => true, name: "location_images[houseimages][]", :class => "uploadButton" %>
+                        </div>
+                      </div>  
+                    <% end %>              
+                  <%# end %>                                          
+                  <div class="form-group ">
+                      <div class="col-lg-10-lg-offset-2 col-lg-10">
+                          <%= f.submit "Save", :class => "btn btn-primary wideButton"%>
+                          <%= link_to "Go Back", locations_path, :method => :get, :class => "btn btn-default wideButton" %>
+                      </div>
+                  </div>
+                <% end %> 
+              </div>
+            </div>
+        </section>   
+    </div>
+</div>

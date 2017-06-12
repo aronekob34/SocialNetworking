@@ -1,0 +1,6 @@
+<%= form_for(@user, :url => {:action => "update", :id => @user.id}, method: :patch, html: { :class => "form-validate form-horizontal" }) do |f| %>
+<%#= form_for(:subject, :url => {:action => "update", :id => @subject.id}, method: :patch, html: {:class => "form-horizontal"}) do |f| %>
+  <%= f.label :firstname %>
+  <%= f.text_field :firstname %>
+  <%= f.submit "Update", :class => "btn btn-primary wideButton" %>
+<% end %>

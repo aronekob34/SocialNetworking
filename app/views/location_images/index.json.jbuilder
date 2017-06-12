@@ -1,0 +1,1 @@
+json.array! @location_images, partial: 'location_images/location_image', as: :location_image

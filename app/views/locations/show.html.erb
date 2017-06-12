@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+               <h2>Location Details</h2>
+            </header>
+
+            <div class="panel-body">
+              <div class="form">
+                <%= form_for(@location, html: {class: "form-validate form-horizontal" }) do |f| %>
+                  <%= render 'partials/error_messages', object: @location %>                
+                  <div class="form-group ">
+                      <%= f.label :country, "Country/Nation", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.country_select(:country, {include_blank: 'Select a country', selected: current_user.country}, {class: 'form-control', :id => "country_select", disabled: true}) %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :state, "State/Region", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :state, :class => "form-control", disabled: true %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :location, "Address", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :location, :class => "form-control", disabled: true %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :description, "Description", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :description, :class => "form-control", disabled: true %>
+                    </div>
+                  </div>                   
+                  <div class="form-group">
+                      <label class="control-label col-lg-2" for="inputSuccess">Benefits</label>
+                      <div class="col-lg-10">
+                          <label class="checkbox-inline">
+                              <%= f.check_box :singleroom, disabled: true %> Singleroom
+                          </label>
+                          <label class="checkbox-inline">
+                              <%= f.check_box :surfspot, disabled: true %> Surfspot
+                          </label>
+                          <label class="checkbox-inline">
+                              <%= f.check_box :barbecue, disabled: true %> Barbecue
+                          </label>
+                          <label class="checkbox-inline">
+                              <%= f.check_box :villa, disabled: true %> Villa
+                          </label>
+                          <label class="checkbox-inline">
+                              <%= f.check_box :swimmingpool, disabled: true %> Swimmingpool
+                          </label>
+                          <label class="checkbox-inline">
+                              <%= f.check_box :skiresort, disabled: true %> Skiresort
+                          </label>                                          
+                      </div>
+                  </div>                  
+                <% end %> 
+              </div>
+            </div>
+        </section>   
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+               <h2>Pictures</h2>
+            </header>
+            <div class="panel-body">
+              <div class="form">
+                <div class="row">
+                  <% @location_images.each do |p| %>
+                  <%# for i in 0..(@location.houseimages.size-1) %>
+                  <div class="col-md-3 col-sm-3" id="colPictures">
+                    <%= image_tag p.houseimages_url, :class => "center-block houseimage" %>
+                    <%#= image_tag @location.houseimages[i].url, :class => "center-block houseimage" %>
+                    <%# break if i > 3 %>
+                    <%= link_to "Display", location_image_path(p), :class => "imageEdit btn btn-primary" %>
+                    <%= link_to "Edit", edit_location_image_path(p), :class => "imageEdit btn btn-warning" %>
+                    <%= link_to "Delete", delete_location_images_path(p.id), :class => "imageEdit btn btn-danger" %>
+                  </div>
+                  <% end %>
+                  <%# end %>
+                </div>                 
+              </div>
+            </div>
+        </section>   
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+        <div class="form-group ">
+          <div class="panel-body">
+            <div class="form">        
+              <div class="col-lg-10-lg-offset-2 col-lg-10">
+                  <%#= f.submit "Save", :class => "btn btn-primary wideButton"%>
+                  <%= link_to "Go Back", locations_path, :method => :get, :class => "btn btn-default wideButton" %>
+                  <%#= link_to "Add Image", new_location_image_path, :class => "btn btn-primary wideButton" %>
+              </div>
+            </div>
+          </div>            
+        </div> 
+        </section>   
+    </div>
+</div>        

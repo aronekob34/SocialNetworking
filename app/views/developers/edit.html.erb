@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+               <h2>Developer Profile Creation</h2>
+            </header>
+
+            <div class="panel-body">
+              <div class="form">
+                <%= form_for(@developer, html: {class: "form-validate form-horizontal" }) do |f| %>
+                  <%= render 'partials/error_messages', object: @developer %>                
+                  <div class="form-group ">
+                      <%= f.label :jobtitle_id, "Job Title", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.select(:jobtitle_id, Jobtitle.all.collect {|p| [ p.name, p.id ]}, {:selected => @developer.jobtitle_id}, {:class => "form-control"}) %>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                      <%= f.label :description, "Description", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_area :description, :rows => 8, :class => "form-control" %>
+                    </div>
+                  </div>                    
+                  <div class="form-group ">
+                      <%= f.label :experience, "Years of Experience", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.number_field :experience, :class => "form-control", :id => "firstname" %>
+                    </div>
+                  </div> 
+                  <div class="form-group ">
+                      <%= f.label :interest_list, "Interests", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :interest_list,  :class => "tagsinput form-control", :id => "tagsinput", value: f.object.interest_list.map { |t| t}.join(', ') %>
+                    </div>
+                  </div> 
+
+                  <div class="form-group ">
+                      <%= f.label :website_url, "Website url", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :website_url, :class => "form-control", :id => "lastname" %>
+                    </div>
+                  </div>                
+                  <div class="form-group ">
+                      <%= f.label :skill_list, "Skills", :class => "control-label col-lg-2" %>
+                    <div class="col-lg-10">
+                      <%= f.text_field :skill_list, :class => "tagsinput form-control", :id => "tagsinput", value: f.object.skill_list.map { |t| t}.join(', ') %>
+                      <%#= raw @developer.skill_list.map { |t| link_to t}.join(', ') %>
+                    </div>
+                  </div>                                                                                   --
+                  <div class="form-group ">
+                      <div class="col-lg-10-lg-offset-2 col-lg-10">
+                          <%= f.submit "Update", :class => "btn btn-primary wideButton"%>
+                          <%#= link_to "Cancel", edit_user_registration_path, :method => :get, :class => "btn btn-default wideButton" %>
+                      </div>
+                  </div>
+                <% end %> 
+              </div>
+            </div>
+        </section>   
+    </div>
+</div>
